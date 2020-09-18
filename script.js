@@ -1,7 +1,14 @@
+/* TODO:
+1. Implement delete function from books
+2. Add "read" function to all books as a new column value
+3. When more experienced clean up code
+*/
 let myLibrary = [];
 const button = document.getElementById("button");
 var bookTable = document.getElementById("book-list");
 button.addEventListener("click", createBook);
+const del = document.getElementsByClassName("delete");
+del.addEventListener("click", deleteBook);
 
 function Book(title, author, pages, status) {
     this.title = title;
@@ -18,8 +25,6 @@ function addBookToLibary(book){
 
 function displayBooks(){
     for(var i = 0; i < myLibrary.length; i++){
-        console.log("hi");
-        console.log(myLibrary.length);
         var books = document.createElement("tr");
         var title1 = document.createElement("td");
         title1.innerHTML = myLibrary[i].title;
@@ -32,7 +37,7 @@ function displayBooks(){
         var del = document.createElement("td");
         var a = document.createElement("a");
         a.href="#";
-        a.className = "btn btn-danger but";
+        a.className = "btn btn-danger delete";
         a.innerHTML = "X";
         del.appendChild(a);
 
@@ -56,3 +61,9 @@ function createBook(){
     displayBooks();
 }
 
+function deleteBook(e){
+    if(confirm("Are you sure")){
+        var par = e.target.parentElement.parentElement;
+        bookTable.removeChild(par);
+    }
+}
