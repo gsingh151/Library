@@ -1,0 +1,11 @@
+#navbar {
+    display: grid;
+    grid-template-columns: 400px 1fr 400px;
+    grid-template-areas: "title";
+    justify-items: center;
+}
+
+#button {
+    grid-area: title;
+    align-self: center;
+} 
